@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A portfolio slot game production demo showcasing game production, QA, risk management and release documentation." />
+  <title>Neon Vault — Slot Game Production Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">GAME PRODUCTION PORTFOLIO DEMO</p>
+        <h1>NEON VAULT</h1>
+      </div>
+      <div class="top-actions">
+        <button id="soundBtn" class="ghost-btn" aria-pressed="true">Sound: On</button>
+        <button id="helpBtn" class="ghost-btn">How it works</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="game-card" aria-label="Neon Vault slot game demo">
+        <div class="hud">
+          <div class="stat"><span>Credits</span><strong id="credits">1,000</strong></div>
+          <div class="stat"><span>Bet</span><strong id="betDisplay">20</strong></div>
+          <div class="stat"><span>Last Win</span><strong id="lastWin">0</strong></div>
+          <div class="stat"><span>Free Spins</span><strong id="freeSpins">0</strong></div>
+        </div>
+
+        <div id="message" class="message" role="status" aria-live="polite">Match 3+ symbols left-to-right on a highlighted payline.</div>
+
+        <div class="reels-wrap">
+          <div id="reels" class="reels" aria-label="Five reel by three row slot grid"></div>
+          <div id="winLine" class="win-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="controls">
+          <div class="bet-control">
+            <button id="betDown" class="round-btn" aria-label="Decrease bet">−</button>
+            <div><span>BET</span><strong id="betControlValue">20</strong></div>
+            <button id="betUp" class="round-btn" aria-label="Increase bet">+</button>
+          </div>
+
+          <button id="spinBtn" class="spin-btn">SPIN</button>
+
+          <button id="paytableBtn" class="secondary-btn">Paytable</button>
+        </div>
+
+        <p class="disclaimer">Portfolio prototype only. Uses simulated credits; no real-money wagering, deposits or cash-out.</p>
+      </section>
+
+      <section class="portfolio-grid">
+        <article>
+          <span>01</span>
+          <h2>Production</h2>
+          <p>Defined MVP scope, milestone plan, cross-functional dependencies and release criteria.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h2>QA</h2>
+          <p>Created functional, regression and edge-case test coverage with reproducible defect reports.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h2>Risk</h2>
+          <p>Tracked product, math, visual, schedule and compliance risks with owners and mitigations.</p>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="paytableDialog">
+    <div class="dialog-head">
+      <div><p class="eyebrow">NEON VAULT</p><h2>Paytable</h2></div>
+      <button class="ghost-btn" data-close="paytableDialog">Close</button>
+    </div>
+    <p>Wins are evaluated on five fixed paylines. Wild substitutes for regular symbols. Three or more Scatters anywhere award 5 free spins.</p>
+    <div id="paytableList" class="paytable-list"></div>
+  </dialog>
+
+  <dialog id="helpDialog">
+    <div class="dialog-head">
+      <div><p class="eyebrow">PORTFOLIO NOTE</p><h2>How this demo is structured</h2></div>
+      <button class="ghost-btn" data-close="helpDialog">Close</button>
+    </div>
+    <p>This prototype is intentionally small. The focus is the end-to-end production workflow around it: game concept, scope, milestone planning, QA, defect management, risk tracking and release readiness.</p>
+    <ul>
+      <li>5 reels × 3 rows, five fixed paylines</li>
+      <li>Wild substitution and Scatter-triggered free spins</li>
+      <li>Functional and regression QA documentation</li>
+      <li>Production plan, risk register and release checklist in <code>/docs</code></li>
+    </ul>
+  </dialog>
+
+  <script src="game.js"></script>
+</body>
+</html>
