@@ -51,8 +51,8 @@ function makeGrid() {
 
 function renderGrid(grid, winningCells = new Set()) {
   reelsEl.innerHTML = '';
-  for (let col = 0; col < 5; col++) {
-    for (let row = 0; row < 3; row++) {
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col < 5; col++) {
       const symbol = grid[row][col];
       const cell = document.createElement('div');
       const key = `${row}-${col}`;
@@ -105,12 +105,16 @@ function evaluateGrid(grid, bet) {
     lineWins.push({ line: index + 1, amount, ...win });
   });
 
-  let scatterCount = 0;
+  const scatterCells = [];
   grid.forEach((row, r) => row.forEach((s, c) => {
-    if (s.scatter) { scatterCount++; if (scatterCount >= 3) winningCells.add(`${r}-${c}`); }
+    if (s.scatter) scatterCells.push(`${r}-${c}`);
   }));
 
-  return { totalWin, winningCells, lineWins, scatterCount };
+  if (scatterCells.length >= 3) {
+    scatterCells.forEach(cell => winningCells.add(cell));
+  }
+
+  return { totalWin, winningCells, lineWins, scatterCount: scatterCells.length };
 }
 
 function updateHud(win = 0) {
